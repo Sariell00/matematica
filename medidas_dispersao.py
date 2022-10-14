@@ -1,45 +1,53 @@
 import math
 
-def valores():
-    print("Digite os valores: ")
-
-    valores = []
-    while True:
-        valor = input()
-        if valor == '':
-            break
-        valores.append(float(valor))
-
-    tamanho = len(valores)
+class Medidas_dispersao():
+    def __init__(self, valores):
+        self.valores = valores
+        self.tamanho = len(valores)
 
 ############ MÉDIA ############
 
-soma = 0
-for valor in valores:
-    soma += valor
-
-print (f'Média = {round(soma, 2)} / {tamanho}')
-print (f'Média = {round(soma/tamanho, 2)}')
-
+    def media(self):
+        soma = 0
+        global media
+        for valor in self.valores:
+            soma += valor
+        
+        print (f'Média = {round(soma, 2)} / {self.tamanho}')
+        print (f'Média = {round(soma/self.tamanho, 2)}')
+        
+        media = soma/self.tamanho
+    
 ######### DESVIO MÉDIO ###########
 
-desvio = 0
-for valor in valores:
-    desvio += abs(valor-media)
-
-print (f'Desvio Médio = {round(desvio, 2)} / {tamanho}')
-print (f'Desvio Médio = {round(desvio/tamanho, 2)}')
-
+    def desvio_medio(self):
+        desvio = 0
+        for valor in self.valores:
+            desvio += abs(valor - media)
+        
+        print (f'Desvio Médio = {round(desvio, 2)} / {self.tamanho}')
+        print (f'Desvio Médio = {round(desvio/self.tamanho, 2)}')
+    
 ######### VARIÂNCIA ##############
 
-quadrado_desvio = 0
-for valor in valores:
-    quadrado_desvios += (valor-media)**2
+    def variancia(self):
+        quadrado_desvios = 0
+        global var
+        for valor in self.valores:
+            quadrado_desvios += (valor - media)**2
     
-print (f'Variância = {round(quadrado_desvios, 2)} / {len(valores)}')
-var = quadrado_desvios/tamanho
-print (f'Variância = {round(var, 2)}')
-
+        print (f'Variância = {round(quadrado_desvios, 2)} / {self.tamanho}')
+        var = quadrado_desvios/self.tamanho
+        print (f'Variância = {round(var, 2)}')
+        
 ######### DESVIO PADRÃO #########
-print(f'Desvio Padrão = {round(math.sqr(var), 2)}')
 
+    def desvio_padrao(self):
+        print(f'Desvio Padrão = {round(math.sqrt(var), 2)}')
+
+if __name__ == '__main__':
+    a = Medidas_dispersao([1,3,4])
+    a.media()
+    a.desvio_medio()
+    a.variancia()
+    a.desvio_padrao()
