@@ -1,15 +1,16 @@
 import math
 
-print("Digite os valores: ")
+def valores():
+    print("Digite os valores: ")
 
-valores = []
-while True:
-    valor = input()
-    if valor == '':
-        break
-    valores.append(float(valor))
+    valores = []
+    while True:
+        valor = input()
+        if valor == '':
+            break
+        valores.append(float(valor))
 
-tamanho = len(valores)
+    tamanho = len(valores)
 
 ############ MÉDIA ############
 
