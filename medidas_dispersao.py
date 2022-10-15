@@ -10,8 +10,7 @@ class Medidas_dispersao():
     def media(self):
         soma = 0
         global media
-        for valor in self.valores:
-            soma += valor
+        soma = sum(valores)
         
         print (f'Média = {round(soma, 2)} / {self.tamanho}')
         print (f'Média = {round(soma/self.tamanho, 2)}')
